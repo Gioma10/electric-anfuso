@@ -1,3 +1,28 @@
+# Electric Anfuso
+
+Navbar e hero statica con immagine originale della villa. Nessuna animazione.
+
+## Avvio
+
+```sh
+pnpm install
+pnpm dev
+```
+
+Aprire http://localhost:3000. Verifiche: `pnpm lint` e `pnpm build`.
+
+## Struttura
+
+- `src/app`: pagine, layout, stili globali e favicon.
+- `src/components`: Navbar e Hero.
+- `public/images/villa.png`: immagine originale; Next Image gestisce l’ottimizzazione.
+- Configurazioni e dipendenze rimangono nella radice.
+- L’alias `@/` punta a `src/`.
+
+La navbar include Home, unica pagina esistente. Aggiungere gli altri collegamenti quando saranno disponibili le destinazioni. GSAP resta installato ma non viene usato.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
