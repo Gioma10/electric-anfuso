@@ -2,7 +2,6 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
 import { type CSSProperties, useEffect, useRef } from "react";
 import { Icon, type IconName } from "@/components/icons";
 import { SectionHeader } from "@/components/section-header";
@@ -197,13 +196,13 @@ export function Projects() {
               <h3 className="text-2xl md:text-2xl">Hai un progetto in mente?</h3>
               <p className="mt-3 text-sm text-white/70 md:text-base">Contattaci per un sopralluogo e un preventivo gratuito. Rispondiamo entro 2 ore.</p>
             </div>
-            <Link
-              href="/#contatti"
+            <a
+              href="#contatti"
               className="group mt-8 inline-flex items-center justify-center gap-3 rounded-md bg-primary px-6 py-3.5 font-medium text-white transition-colors hover:bg-primary/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
               Richiedi preventivo
               <Icon name="arrow" strokeWidth={2} className="size-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
+            </a>
           </div>
           <span className="w-px shrink-0 md:w-7" aria-hidden="true" />
         </div>

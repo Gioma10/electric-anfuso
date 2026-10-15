@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
-import { SideNav } from "@/components/side-nav";
 import { Footer } from "@/components/footer";
+import { SideNav } from "@/components/side-nav";
+import { WhatsappButton } from "@/components/whatsapp-button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,9 +15,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const title = "Elettricista a Catania – Impianti elettrici e domotica | Anfuso Impianti";
+const description =
+  "Impianti elettrici certificati D.M. 37/08 a Catania e provincia: civili, industriali, domotica, videosorveglianza, antifurti e fotovoltaico. Sopralluogo gratuito.";
+
 export const metadata: Metadata = {
-  title: "Anfuso Impianti",
-  description: "Anfuso Impianti",
+  metadataBase: new URL("https://anfusoimpianti.it"),
+  title,
+  description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "it_IT",
+    url: "/",
+    siteName: "Anfuso Impianti",
+    title,
+    description,
+    images: [{ url: "/images/background.webp", width: 1672, height: 941, alt: "Villa con impianto di illuminazione a Catania" }],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -28,8 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground selection:bg-accent selection:text-background">
-
-        <Navbar />
+        <WhatsappButton />
         <SideNav />
         {children}
         <Footer />

@@ -1,10 +1,23 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import { Icon } from "@/components/icons";
 import { WhatsappIcon } from "@/components/whatsapp-icon";
 import { EMAIL, PHONE, PHONE_HREF, QUOTE_HREF, WHATSAPP_HREF } from "@/lib/contacts";
+import { SERVICE_AREAS, SERVICE_GROUPS, TECHNOLOGIES } from "@/lib/content";
 import { CONTAINER } from "@/lib/layout";
 
 const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white";
+
+const linkClass = `text-sm text-white/55 transition-colors hover:text-white ${focusRing}`;
+
+function FooterColumn({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <nav aria-label={title}>
+      <h3 className="text-sm font-semibold text-white md:text-sm">{title}</h3>
+      <ul className="mt-4 space-y-2.5">{children}</ul>
+    </nav>
+  );
+}
 
 // Fine del circuito: la lampadina della linea laterale si accende qui.
 export function Footer() {
@@ -59,10 +72,66 @@ export function Footer() {
         </dl>
       </div>
 
-      <div className="border-t border-white/5">
-        <div className={`${CONTAINER} flex flex-col gap-4 py-8 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between`}>
-          <Image src="/images/anfuso-impianti-spina.png" alt="Anfuso Impianti" width={2022} height={778} className="block w-24 opacity-70 brightness-0 invert" />
-          <p>© Anfuso Impianti · P.IVA 05982790874</p>
+      <div className="border-t border-white/10 bg-black/20">
+        <div className={`${CONTAINER} grid gap-12 pt-16 pb-12 md:grid-cols-2 xl:grid-cols-[1.3fr_1fr_1fr_0.8fr_0.8fr] xl:gap-10`}>
+          <div>
+            <Image src="/images/logo-anfuso.png" alt="Anfuso Anthony Impianti" width={1403} height={1121} className="block w-24 brightness-150" />
+            <p className="mt-5 max-w-xs text-sm text-white/55 md:text-sm">
+              Impianti elettrici e tecnologici a Catania e provincia. Progettazione, installazione e certificazione D.M. 37/08, con installazioni in tutta la Sicilia.
+            </p>
+          </div>
+
+          <FooterColumn title="Servizi">
+            {SERVICE_GROUPS.flatMap((group) => group.services).map((service) => (
+              <li key={service.id}>
+                {/* <a> nativo: l'hashchange apre la tab giusta nella sezione Servizi. */}
+                <a href={`#${service.id}`} className={linkClass}>
+                  {service.title}
+                </a>
+              </li>
+            ))}
+          </FooterColumn>
+
+          <FooterColumn title="Tecnologie">
+            {TECHNOLOGIES.map((tech) => (
+              <li key={tech.title}>
+                <a href="#tecnologie" className={linkClass}>
+                  {tech.title}
+                </a>
+              </li>
+            ))}
+          </FooterColumn>
+
+          <FooterColumn title="Azienda">
+            {[
+              { href: "#servizi", label: "Servizi" },
+              { href: "#tecnologie", label: "Tecnologie" },
+              { href: "#come-lavoriamo", label: "Come lavoriamo" },
+              { href: "#realizzazioni", label: "Realizzazioni" },
+              { href: "#contatti", label: "Contatti" },
+            ].map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className={linkClass}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </FooterColumn>
+
+          <FooterColumn title="Zone servite">
+            {SERVICE_AREAS.map((area) => (
+              <li key={area} className="text-sm text-white/55">
+                {area}
+              </li>
+            ))}
+          </FooterColumn>
+        </div>
+
+        <div className="border-t border-white/5">
+          <div className={`${CONTAINER} flex flex-col gap-2 pt-6 pb-32 text-xs text-white/40 sm:flex-row sm:justify-between lg:pb-6`}>
+            <p className="text-xs md:text-xs">© Anfuso Impianti – Tutti i diritti riservati</p>
+            <p className="text-xs md:text-xs">P.IVA 05982790874 · Catania</p>
+          </div>
         </div>
       </div>
     </footer>

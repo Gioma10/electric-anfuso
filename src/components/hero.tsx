@@ -32,36 +32,45 @@ export function Hero() {
       <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-linear-to-t from-background via-background/60 to-transparent" aria-hidden="true" />
       <div className="absolute inset-0 -z-10 hidden bg-[radial-gradient(ellipse_at_88%_78%,rgba(15,23,42,0.9),transparent_45%)] lg:block" aria-hidden="true" />
 
-      <div className={`${CONTAINER} grid flex-1 content-center gap-14 pt-32 pb-16 lg:grid-cols-[minmax(0,1fr)_16rem] lg:content-end lg:items-end lg:gap-16 lg:pb-20`}>
+      {/* <div className={`${CONTAINER} pt-5 md:pt-6`}>
+        <Link href="/" aria-label="Anfuso Impianti — Home" className={`inline-block ${focusRing}`}>
+          <Image src="/images/logo-anfuso.png" alt="Anfuso Anthony Impianti" width={1403} height={1121} className="block w-24 brightness-150 md:w-28" />
+        </Link>
+      </div> */}
+
+      <div className={`${CONTAINER} grid flex-1 content-center gap-12 pt-24 pb-28 md:pt-28 lg:pt-8 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-center lg:gap-16 lg:pb-40`}>
         <div>
-          <h1 id="hero-title" className="max-w-[12ch] text-5xl leading-[0.95] font-semibold tracking-[-0.035em] text-balance sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
-            Tecnologia che migliora la tua vita<span className="text-primary [text-shadow:0_0_24px_var(--primary)]">.</span>
+          <h1 id="hero-title" className="max-w-[18ch] text-5xl leading-[0.95] font-semibold tracking-[-0.035em] text-balance sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
+            Impianti elettrici a Catania<span className="text-primary [text-shadow:0_0_24px_var(--primary)]">.</span>
           </h1>
-          <p className="mt-7 max-w-136 text-white/80">
-            Impianti elettrici, sicurezza, domotica ed energia per case, aziende e strutture ricettive. Progettati, installati e certificati da un unico referente.
+          <p className="mt-6 max-w-136 text-white/80">
+            Il tuo elettricista per case, aziende e strutture ricettive: impianti certificati, domotica, videosorveglianza e fotovoltaico, dal sopralluogo alla dichiarazione di conformità.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <Link
-              href="/#contatti"
+            <a
+              href="#contatti"
               className={`group inline-flex items-center gap-2.5 rounded-full bg-primary py-3 pr-5 pl-6 text-[15px] font-medium text-white shadow-[0_8px_24px_-8px] shadow-primary transition-colors hover:bg-[#2f78ff] ${focusRing}`}
             >
               Prenota il sopralluogo gratuito
               <Icon name="arrow" strokeWidth={2} className="size-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
+            </a>
             <a href={PHONE_HREF} className={`text-[15px] text-white/70 transition-colors hover:text-white ${focusRing}`}>
               oppure chiama il <span className="font-medium text-white underline decoration-white/30 underline-offset-4">{PHONE}</span>
             </a>
           </div>
         </div>
 
-        <ul className="grid gap-5 border-t border-white/15 pt-8 sm:grid-cols-3 lg:grid-cols-1 lg:gap-0 lg:border-t-0 lg:border-l lg:pt-0">
+        {/* Pannello opaco: le caratteristiche restano leggibili anche sopra le luci della villa. */}
+        <ul className="grid divide-y divide-white/10 rounded-2xl border border-white/15 bg-background/80 shadow-[0_24px_48px_-24px_rgba(0,0,0,0.8)] backdrop-blur-md sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:grid-cols-1 lg:divide-x-0 lg:divide-y">
           {highlights.map((item) => (
-            <li key={item.title} className="flex gap-4 lg:py-4 lg:pl-6">
-              <Icon name={item.icon} className="mt-0.5 size-5 shrink-0 text-sky-300" />
+            <li key={item.title} className="flex items-start gap-4 p-5">
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-sky-300 ring-1 ring-primary/40">
+                <Icon name={item.icon} className="size-5.5" />
+              </span>
               <div>
-                <p className="text-[15px] font-medium md:text-[15px]">{item.title}</p>
-                <p className="mt-0.5 text-sm text-white/60 md:text-sm">{item.text}</p>
+                <p className="text-base font-semibold text-white md:text-base">{item.title}</p>
+                <p className="mt-1 text-sm text-white/75 md:text-sm">{item.text}</p>
               </div>
             </li>
           ))}
