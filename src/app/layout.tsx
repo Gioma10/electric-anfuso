@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
 import { SideNav } from "@/components/side-nav";
-import { WhatsappButton } from "@/components/whatsapp-button";
+import { TopBar } from "@/components/top-bar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground selection:bg-accent selection:text-background">
-        <WhatsappButton />
+        <TopBar />
         <SideNav />
         {children}
         <Footer />
